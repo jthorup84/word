@@ -1,0 +1,44 @@
+<%= "email: "+@member.email %></br>
+<%= "First Name: "+@member.first_name.to_s %></br>
+<%="Last Name: "+@member.last_name.to_s %></br>
+<%="Score: "+@member.score.to_s %></br>
+</br>
+
+<%= "Yesterday's Word: "+ @member.yesterday_answer.to_s %></br>
+<%= "Your Guess: "+ @member.yesterday_guess.to_s %></br></br>
+<% if @member.is_admin? %>
+  <%= "Today's Word: "+@answer.to_s %></br></br>
+  <% else %>
+  <%= "Today's Word: "+@hint.to_s %></br></br>
+<% end %>
+<% if @member.answered? %>
+  <%= @member.guesses.last.correct ? "Good Job! You guessed the right word today!" : "Sorry, you guessed the wrong word today." %></br>
+  <%= "Another word will be available to guess tomorrow." %>
+<% end %>
+
+
+
+<% if @member.add_answer? %>
+<%= form_for :new_answer, url: answers_path do |f| %>
+  <p>
+    <%= f.label "Today's Word" %><br>
+    <%= f.text_field :word %>
+  </p>
+  <p>
+    <%= f.submit "Create Word"%>
+  </p>
+<% end %>
+<% end %>
+<% if @member.can_answer? %>
+  <%= form_for :new_guess, url: guesses_path do |f| %>
+    <p>
+      <%= f.label "Guess Today's Word" %><br>
+      <%= f.text_field :word %>
+    </p>
+    <p>
+      <%= f.submit "Submit Guess"%>
+    </p>
+  <% end %>
+<% end %>
+</br></br>
+<%= link_to 'Member Scores', controller: 'members' %>

@@ -1,0 +1,7 @@
+<%= link_to "Make You're Guess", @member %></br></br>
+<% @members.each do |member| %>
+<%= link_to member.email, member %></br>
+<%= "Score: " + member.score.to_s %></br></br>
+<% end %>
+
+<%= link_to 'LogOut', welcome_logout_path %>

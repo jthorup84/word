@@ -1,0 +1,21 @@
+<h1>Welcome to Word</h1>
+<p>Sign In Here</p>
+<%= form_for :member, url: members_login_path do |m| %>
+
+  <p>
+    <%= m.label "Email" %><br>
+    <%= m.text_field :email %>
+  </p>
+
+  <p>
+    <%= m.label "Password" %><br>
+    <%= m.password_field :password %>
+  </p>
+
+
+  <p>
+    <%= m.submit "Sign In"%>
+  </p>
+<% end %>
+
+<p>Don't have an acount? <a href="/members/new">Sign Up!</a></p>

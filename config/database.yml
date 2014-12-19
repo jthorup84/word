@@ -1,0 +1,37 @@
+# SQLite version 3.x
+#   gem install sqlite3
+#
+#   Ensure the SQLite 3 gem is defined in your Gemfile
+#   gem 'sqlite3'
+#
+default: &default
+  adapter: sqlite3
+  pool: 5
+  timeout: 5000
+
+development:
+  adapter: postgresql
+  encoding: utf8
+  database: word_development
+  pool: 5
+  username:
+  password:
+
+test: &TEST
+  adapter: postgresql
+  encoding: utf8
+  database: word_test
+  pool: 5
+  username:
+  password:
+
+production:
+  adapter: postgresql
+  encoding: utf8
+  database: wordrake _production
+  pool: 5
+  username:
+  password:
+
+cucumber:
+  <<: *TEST

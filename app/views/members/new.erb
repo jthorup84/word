@@ -1,0 +1,28 @@
+<%= form_for :member, url: members_path do |m| %>
+  <p>
+    <%= m.label "First Name" %><br>
+    <%= m.text_field :first_name %>
+  </p>
+
+
+
+  <p>
+    <%= m.label "Last Name" %><br>
+    <%= m.text_field :last_name %>
+  </p>
+
+  <p>
+    <%= m.label "Email" %><br>
+    <%= m.text_field :email %>
+  </p>
+
+  <p>
+    <%= m.label "Password" %><br>
+    <%= m.password_field :password %>
+  </p>
+
+
+  <p>
+    <%= m.submit %>
+  </p>
+<% end %>
