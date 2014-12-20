@@ -1,11 +1,11 @@
 class GuessesController < ApplicationController
   def create
-    correct = guess_params[:word] == Answer.last.word
+    correct = guess_params[:word].downcase == Answer.last.word.downcase
     member = Member.find session[:user_id]
     if !member.answered?
       member.score += 1 unless !correct
       member.save
-      member.guesses.create(word: guess_params[:word], correct: correct)
+      member.guesses.create(word: guess_params[:word].downcase, correct: correct)
     end
     redirect_to member_path(Member.find session[:user_id])
   end
