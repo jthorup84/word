@@ -59,19 +59,6 @@ Rails.application.configure do
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
   # config.action_mailer.raise_delivery_errors = false
-  Word::Application.configure do
-
-    config.action_mailer.delivery_method = :smtp
-    config.action_mailer.smtp_settings = {
-      :port           => ENV['587'],
-      :address        => ENV['smtp.mailgun.org'],
-      :user_name      => ENV['postmaster@app32675440.mailgun.org'],
-      :password       => ENV['da6d10d1aa6ef13e7c89cba66788f82c'],
-      :domain         => 'dailywordguess.herokuapp.com',
-      :authentication => :plain,
-    }
-
-  end
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation cannot be found).
