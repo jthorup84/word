@@ -25,7 +25,7 @@ class MembersController < ApplicationController
   end
 
   def new
-
+    @member = Member.new
   end
 
   def show
@@ -42,12 +42,16 @@ class MembersController < ApplicationController
   end
 
   def create
-    @member = Member.create(email: member_params[:email], first_name:  member_params[:first_name], last_name:  member_params[:last_name], role: 2, score: 0)
-    if @member.valid?
+    @member = Member.new(email: member_params[:email], first_name:  member_params[:first_name], last_name:  member_params[:last_name], role: 2, score: 0)
+    if member_params[:password].present?
       @member.update_attribute(:salt,  SecureRandom.base64(8))
       @member.update_attribute(:password, Digest::SHA2.hexdigest(@member.salt + member_params[:password]))
     end
-    redirect_to welcome_index_path
+    if @member.save
+      redirect_to welcome_index_path
+    else
+      render 'new'
+    end
   end
 
   private

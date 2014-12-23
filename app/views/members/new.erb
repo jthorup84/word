@@ -1,4 +1,6 @@
 <%= form_for :member, url: members_path do |m| %>
+
+
   <p>
     <%= m.label "First Name" %><br>
     <%= m.text_field :first_name %>
@@ -25,4 +27,14 @@
   <p>
     <%= m.submit %>
   </p>
+  <% if @member.errors.any? %>
+    <div id="error_explanation">
+      <ul>
+        <% @member.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
 <% end %>
+
