@@ -5,9 +5,9 @@ class AnswersController < ApplicationController
 
   def create
     Answer.create(word: answer_params[:word])
-    # Member.find_each do |member|
-    #   WordMailer.new_word_email(member).deliver
-    # end
+    Member.find_each do |member|
+      WordMailer.new_word_email(member).deliver
+    end
     redirect_to member_path(Member.find session[:user_id])
   end
 
