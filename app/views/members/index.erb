@@ -1,3 +1,6 @@
+
+<div class=" round">
+  <div class="center round">
 <%= link_to "Make Your Guess", @member %></br></br>
 <% @members.each do |member| %>
 <%= link_to member.email, member %></br>
@@ -5,3 +8,5 @@
 <% end %>
 
 <%= link_to 'LogOut', welcome_logout_path %>
+    </div>
+  </div>
