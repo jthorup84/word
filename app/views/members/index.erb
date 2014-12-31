@@ -4,8 +4,13 @@
 <%= link_to "Make Your Guess", @member %></br></br>
 <% @members.each do |member| %>
 <%= link_to member.email, member %></br>
-<%= "Score: " + member.score.to_s %></br></br>
+<%= "Score: " + member.score.to_s %></br>
+<% if member.answered? %>
+<%= "Has made a guess today."%>
 <% end %>
+</br></br>
+
+  <% end %>
 
 <%= link_to 'LogOut', welcome_logout_path %>
     </div>
